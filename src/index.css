@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-pixel: "Press Start 2P", system-ui;
+  --font-sans: "Inter", system-ui;
+
+  --color-pixel-bg-dark: #0a0a2a;
+  --color-pixel-bg-light: #f5f5dc;
+  --color-pixel-border: #000;
+  --color-pixel-accent-dark: #00ffff;
+  --color-pixel-accent-light: #2d5a27;
+}
+
+@layer base {
+  html {
+    @apply font-pixel;
+  }
+  body {
+    @apply font-pixel antialiased overflow-x-hidden bg-black text-white;
+  }
+  
+  /* Hide scrollbars globally */
+  * {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  *::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
+
+@layer components {
+  .pixel-border {
+    @apply border-4 border-black relative;
+    box-shadow: 
+      -4px 0 0 0 #000,
+      4px 0 0 0 #000,
+      0 -4px 0 0 #000,
+      0 4px 0 0 #000;
+  }
+
+  .pixel-button {
+    @apply px-4 py-2 bg-white text-black active:translate-y-1 transition-transform cursor-pointer;
+    box-shadow: 
+      -4px 0 0 0 #000,
+      4px 0 0 0 #000,
+      0 -4px 0 0 #000,
+      0 4px 0 0 #000,
+      inset -4px -4px 0 0 #ccc;
+  }
+
+  .scanlines {
+    @apply pointer-events-none fixed inset-0 z-50;
+    background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.1) 50%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.03),
+      rgba(0, 255, 0, 0.01),
+      rgba(0, 0, 255, 0.03)
+    );
+    background-size: 100% 4px, 3px 100%;
+  }
+
+  .crt-glow {
+    text-shadow: 0 0 8px currentColor;
+  }
+}
+
+/* Dark Mode Theme */
+.theme-dark {
+  --bg-primary: #0a0a2a;
+  --text-primary: #00ffff;
+  --text-secondary: #94a3b8; /* gray-400 */
+  --text-muted: #64748b; /* gray-500 */
+  --accent-primary: #ff00ff;
+  --border-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Light Mode Theme */
+.theme-light {
+  --bg-primary: #f5f5dc;
+  --text-primary: #1a1a1a; /* Near black */
+  --text-secondary: #333333; /* Dark gray */
+  --text-muted: #4b5563; /* gray-600 */
+  --accent-primary: #8b4513;
+  --border-color: rgba(0, 0, 0, 0.2);
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+@theme {
+  --color-theme-text: var(--text-primary);
+  --color-theme-secondary: var(--text-secondary);
+  --color-theme-muted: var(--text-muted);
+  --color-theme-border: var(--border-color);
+}
