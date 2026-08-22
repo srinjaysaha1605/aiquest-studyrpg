@@ -1,6 +1,6 @@
 # ⚔️ AI Quest — Study RPG
 
-Live Preview: https://aiquest-studyrpg.netlify.app/
+Live Demo: https://aiquest-studyrpg.netlify.app/
 
 <p align="center">
   <img src="public/assets/quests.png" alt="AI Quest Banner" width="120" />
