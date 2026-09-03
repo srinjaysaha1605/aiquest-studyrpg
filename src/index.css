@@ -1,15 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-pixel: "Press Start 2P", system-ui;
   --font-sans: "Inter", system-ui;
 
-  --color-pixel-bg-dark: #0a0a2a;
-  --color-pixel-bg-light: #f5f5dc;
+  --color-pixel-bg-dark: #07071c;
+  --color-pixel-bg-light: #eaf0f6;
   --color-pixel-border: #000;
-  --color-pixel-accent-dark: #00ffff;
-  --color-pixel-accent-light: #2d5a27;
 }
 
 @layer base {
@@ -17,7 +15,7 @@
     @apply font-pixel;
   }
   body {
-    @apply font-pixel antialiased overflow-x-hidden bg-black text-white;
+    @apply font-pixel antialiased overflow-x-hidden transition-colors duration-300;
   }
   
   /* Hide scrollbars globally */
@@ -30,83 +28,213 @@
   }
 }
 
+/* =========================================================
+   DARK MODE THEME (Retro Midnight Cyber-Arcade)
+   ========================================================= */
+.theme-dark {
+  --bg-app: #060719;
+  --bg-card: #0d0e2e;
+  --bg-card-solid: #0d0e2e;
+  --bg-card-overlay: rgba(13, 14, 46, 0.95);
+  --bg-input: #050614;
+  --bg-hud: rgba(6, 7, 25, 0.92);
+  --bg-accent-box: #161845;
+  
+  --text-main: #f8fafc;
+  --text-title: #00ffff;
+  --text-sub: #a5b4fc;
+  --text-muted: #818cf8;
+  --text-invert: #000000;
+  
+  --border-card: #000000;
+  --border-glow: #3730a3;
+  --border-pixel: #000000;
+  
+  --accent-cyan: #00ffff;
+  --accent-yellow: #facc15;
+  --accent-green: #4ade80;
+  --accent-red: #f87171;
+  
+  --pixel-shadow: #000000;
+  --glow-shadow: rgba(0, 255, 255, 0.25);
+  
+  --chip-bg: #12143d;
+  --chip-hover-bg: #1e2260;
+  --chip-text: #ffffff;
+  --chip-border: #000000;
+  
+  --option-btn-bg: #0e1033;
+  --option-btn-hover-bg: #1a1e5c;
+  --option-btn-border: #000000;
+  --option-btn-text: #ffffff;
+
+  background-color: var(--bg-app) !important;
+  color: var(--text-main) !important;
+}
+
+/* =========================================================
+   LIGHT MODE THEME (Eye-Friendly High-Contrast Paper Arcade)
+   - Non-glare slate/paper background (#e2e8f0)
+   - Pure white card containers (#ffffff) with thick 4px black borders
+   - High-visibility pitch-black text (#0f172a)
+   - Deep vibrant arcade colors for accents
+   ========================================================= */
+.theme-light {
+  --bg-app: #e2e8f0;
+  --bg-card: #ffffff;
+  --bg-card-solid: #ffffff;
+  --bg-card-overlay: #ffffff;
+  --bg-input: #f8fafc;
+  --bg-hud: #ffffff;
+  --bg-accent-box: #f1f5f9;
+  
+  --text-main: #0f172a;
+  --text-title: #0f172a;
+  --text-sub: #1e293b;
+  --text-muted: #334155;
+  --text-invert: #ffffff;
+  
+  --border-card: #000000;
+  --border-glow: #000000;
+  --border-pixel: #000000;
+  
+  --accent-cyan: #0284c7;   /* Rich deep blue-cyan */
+  --accent-yellow: #d97706; /* Dark amber gold */
+  --accent-green: #15803d;  /* Deep emerald */
+  --accent-red: #dc2626;    /* Vibrant crimson */
+  
+  --pixel-shadow: #000000;
+  --glow-shadow: rgba(0, 0, 0, 0.15);
+  
+  --chip-bg: #ffffff;
+  --chip-hover-bg: #e0f2fe;
+  --chip-text: #0f172a;
+  --chip-border: #000000;
+  
+  --option-btn-bg: #ffffff;
+  --option-btn-hover-bg: #e2e8f0;
+  --option-btn-border: #000000;
+  --option-btn-text: #0f172a;
+
+  background-color: var(--bg-app) !important;
+  color: var(--text-main) !important;
+}
+
+/* =========================================================
+   REUSABLE PIXEL UI COMPONENTS
+   ========================================================= */
 @layer components {
+  /* Pixel Card Container */
+  .pixel-card {
+    background-color: var(--bg-card);
+    border: 4px solid #000000;
+    box-shadow: 
+      -4px 0 0 0 #000000,
+      4px 0 0 0 #000000,
+      0 -4px 0 0 #000000,
+      0 4px 0 0 #000000,
+      5px 5px 0 0 #000000;
+    color: var(--text-main);
+  }
+
+  /* Pixel Border Box */
   .pixel-border {
-    @apply border-4 border-black relative;
+    border: 4px solid #000000;
+    position: relative;
     box-shadow: 
-      -4px 0 0 0 #000,
-      4px 0 0 0 #000,
-      0 -4px 0 0 #000,
-      0 4px 0 0 #000;
+      -4px 0 0 0 #000000,
+      4px 0 0 0 #000000,
+      0 -4px 0 0 #000000,
+      0 4px 0 0 #000000,
+      4px 4px 0 0 #000000;
   }
 
+  /* Retro Arcade 3D Button */
   .pixel-button {
-    @apply px-4 py-2 bg-white text-black active:translate-y-1 transition-transform cursor-pointer;
+    @apply px-4 py-2 font-pixel text-xs font-bold active:translate-y-1 transition-all cursor-pointer inline-flex items-center justify-center gap-2 select-none;
+    color: var(--text-invert);
+    background-color: #facc15;
+    border: 3px solid #000000;
     box-shadow: 
-      -4px 0 0 0 #000,
-      4px 0 0 0 #000,
-      0 -4px 0 0 #000,
-      0 4px 0 0 #000,
-      inset -4px -4px 0 0 #ccc;
+      -3px 0 0 0 #000000,
+      3px 0 0 0 #000000,
+      0 -3px 0 0 #000000,
+      0 3px 0 0 #000000,
+      4px 4px 0 0 #000000;
+  }
+  .pixel-button:hover:not(:disabled) {
+    transform: translate(-1px, -1px);
+    box-shadow: 
+      -3px 0 0 0 #000000,
+      3px 0 0 0 #000000,
+      0 -3px 0 0 #000000,
+      0 3px 0 0 #000000,
+      5px 5px 0 0 #000000;
+  }
+  .pixel-button:active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: 
+      -3px 0 0 0 #000000,
+      3px 0 0 0 #000000,
+      0 -3px 0 0 #000000,
+      0 3px 0 0 #000000,
+      2px 2px 0 0 #000000;
   }
 
+  /* Pixel Input Field */
+  .pixel-input {
+    background-color: var(--bg-input);
+    border: 4px solid #000000;
+    color: var(--text-main);
+    box-shadow: 
+      -3px 0 0 0 #000000,
+      3px 0 0 0 #000000,
+      0 -3px 0 0 #000000,
+      0 3px 0 0 #000000,
+      3px 3px 0 0 #000000;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+  .pixel-input:focus {
+    border-color: #000000;
+    box-shadow: 
+      -3px 0 0 0 #000000,
+      3px 0 0 0 #000000,
+      0 -3px 0 0 #000000,
+      0 3px 0 0 #000000,
+      5px 5px 0 0 #000000;
+  }
+
+  /* Pixel Badge */
+  .pixel-badge {
+    border: 2px solid #000000;
+    box-shadow: 2px 2px 0 0 #000000;
+  }
+
+  /* CRT Scanlines Overlay */
   .scanlines {
     @apply pointer-events-none fixed inset-0 z-50;
     background: linear-gradient(
       rgba(18, 16, 16, 0) 50%,
-      rgba(0, 0, 0, 0.1) 50%
+      rgba(0, 0, 0, 0.08) 50%
     ),
     linear-gradient(
       90deg,
-      rgba(255, 0, 0, 0.03),
+      rgba(255, 0, 0, 0.02),
       rgba(0, 255, 0, 0.01),
-      rgba(0, 0, 255, 0.03)
+      rgba(0, 0, 255, 0.02)
     );
     background-size: 100% 4px, 3px 100%;
   }
 
+  /* CRT Glow */
   .crt-glow {
     text-shadow: 0 0 8px currentColor;
   }
-}
 
-/* Dark Mode Theme */
-.theme-dark {
-  --bg-primary: #0a0a2a;
-  --text-primary: #00ffff;
-  --text-secondary: #94a3b8; /* gray-400 */
-  --text-muted: #64748b; /* gray-500 */
-  --accent-primary: #ff00ff;
-  --border-color: rgba(255, 255, 255, 0.1);
-  background-color: var(--bg-primary) !important;
-  color: var(--text-primary) !important;
-}
-
-/* Light Mode Theme */
-.theme-light {
-  --bg-app: #e2e8f0;         
-  --bg-card: #ffffff;           
-  --bg-input: #f8fafc;
-  --bg-accent-box: #f1f5f9;
-  
-  --text-main: #0f172a;         
-  --text-title: #0f172a;
-  --text-sub: #1e293b;
-  --text-muted: #334155;
-  
-  --accent-cyan: #0284c7;       
-  --accent-yellow: #d97706;     
-  --accent-green: #15803d;      
-  --accent-red: #dc2626;       
-  
-  --option-btn-bg: #ffffff;
-  --option-btn-hover-bg: #e2e8f0;
-  --option-btn-text: #0f172a;
-}
-
-@theme {
-  --color-theme-text: var(--text-primary);
-  --color-theme-secondary: var(--text-secondary);
-  --color-theme-muted: var(--text-muted);
-  --color-theme-border: var(--border-color);
+  /* CRT Vignette Screen Curve Effect */
+  .crt-vignette {
+    @apply pointer-events-none fixed inset-0 z-40;
+    box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.35);
+  }
 }
