@@ -150,10 +150,8 @@ export const BattleScreen: React.FC<BattleScreenProps> = ({ questions, onComplet
                 src="/assets/fighter.png" 
                 alt="Fighter" 
                 className="w-16 h-16 sm:w-20 sm:h-20 object-contain" 
-                onError={(e) => { e.currentTarget.style.display = 'none'; }}
                 referrerPolicy="no-referrer"
               />
-              <span className="text-3xl">🛡️</span>
             </div>
             
             <div className="text-[10px] font-bold text-[var(--text-main)]">HERO FIGHTER</div>
@@ -184,10 +182,8 @@ export const BattleScreen: React.FC<BattleScreenProps> = ({ questions, onComplet
                 src="/assets/monster.png" 
                 alt="Monster" 
                 className="w-16 h-16 sm:w-20 sm:h-20 object-contain" 
-                onError={(e) => { e.currentTarget.style.display = 'none'; }}
                 referrerPolicy="no-referrer"
               />
-              <span className="text-3xl">👾</span>
             </div>
             
             <div className="text-[10px] font-bold text-red-500 truncate max-w-[140px]">
@@ -262,10 +258,8 @@ export const BattleScreen: React.FC<BattleScreenProps> = ({ questions, onComplet
                     src="/assets/mentor.png" 
                     alt="Mentor" 
                     className="w-10 h-10 object-contain"
-                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
                     referrerPolicy="no-referrer"
                   />
-                  <span className="text-2xl">🧙‍♂️</span>
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-[var(--accent-yellow)]">THE MENTOR SPEAKS</h3>
