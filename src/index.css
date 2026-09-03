@@ -84,14 +84,24 @@
 
 /* Light Mode Theme */
 .theme-light {
-  --bg-primary: #f5f5dc;
-  --text-primary: #1a1a1a; /* Near black */
-  --text-secondary: #333333; /* Dark gray */
-  --text-muted: #4b5563; /* gray-600 */
-  --accent-primary: #8b4513;
-  --border-color: rgba(0, 0, 0, 0.2);
-  background-color: var(--bg-primary) !important;
-  color: var(--text-primary) !important;
+  --bg-app: #e2e8f0;         
+  --bg-card: #ffffff;           
+  --bg-input: #f8fafc;
+  --bg-accent-box: #f1f5f9;
+  
+  --text-main: #0f172a;         
+  --text-title: #0f172a;
+  --text-sub: #1e293b;
+  --text-muted: #334155;
+  
+  --accent-cyan: #0284c7;       
+  --accent-yellow: #d97706;     
+  --accent-green: #15803d;      
+  --accent-red: #dc2626;       
+  
+  --option-btn-bg: #ffffff;
+  --option-btn-hover-bg: #e2e8f0;
+  --option-btn-text: #0f172a;
 }
 
 @theme {
