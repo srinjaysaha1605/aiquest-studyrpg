@@ -219,13 +219,8 @@ export default function App() {
               src="/assets/profile.png" 
               alt="Avatar" 
               className="w-8 h-8 object-contain"
-              onError={(e) => {
-                // Fallback emoji if PNG fails to render
-                e.currentTarget.style.display = 'none';
-              }}
               referrerPolicy="no-referrer"
             />
-            <span className="text-lg">🛡️</span>
           </div>
           <div>
             <div className="flex items-center gap-2">
@@ -361,10 +356,8 @@ export default function App() {
                       src="/assets/profile.png" 
                       alt="Profile" 
                       className="w-14 h-14 object-contain"
-                      onError={(e) => { e.currentTarget.style.display = 'none'; }}
                       referrerPolicy="no-referrer"
                     />
-                    <span className="text-3xl">⚔️</span>
                   </div>
                   <div className="space-y-1">
                     <div className="text-base font-bold text-[var(--text-main)]">{user.display_name}</div>
